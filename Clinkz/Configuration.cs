@@ -21,6 +21,7 @@
                 AbilityId.item_solar_crest,
                 AbilityId.item_sheepstick,
                 AbilityId.item_diffusal_blade,
+                AbilityId.item_nullifier,
                 AbilityId.item_orchid,
                 AbilityId.item_bloodthorn,
                 AbilityId.item_mjollnir
