@@ -56,7 +56,10 @@ namespace Clinkz
 
         [ItemBinding]
         public item_mjollnir Mjollnir { get; set; }
-
+        
+        [ItemBinding]
+        public item_nullifier Nullifier { get; set; }
+        
         [ItemBinding]
         public item_bloodthorn Bloodthorn { get; set; }
 
@@ -166,6 +169,13 @@ namespace Clinkz
                     await Await.Delay(Mjollnir.GetCastDelay(Owner), token);
                 }
 
+                if (Nullifier != null && Nullifier.CanBeCasted && !Owner.IsAttacking() && !_target.IsMagicImmune() &&
+                    _configuration.ItemManager.Value.IsEnabled(Nullifier.ToString()) && Owner.IsInAttackRange(_target))
+                {
+                    Nullifier.UseAbility(_target);
+                    await Await.Delay(Nullifier.GetCastDelay(_target), token);
+                }
+                
                 if (Bloodthorn != null && Bloodthorn.CanBeCasted && !Owner.IsAttacking() && !_target.IsMagicImmune() &&
                     _configuration.ItemManager.Value.IsEnabled(Bloodthorn.ToString()) && Owner.IsInAttackRange(_target))
                 {
